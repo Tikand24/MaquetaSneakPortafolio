@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maqueta Sneak</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Questrial&display=swap" rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            font-family: "Questrial", "Montserrat", sans-serif;
+            letter-spacing: 3pt;
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            list-style: none;
+            list-style-type: none;
+            text-decoration: none;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
+
+        body {
+            margin: 0px;
+        }
+
+        button {
+            border: 0;
+            outline: none;
+            border-radius: 0;
+            font-size: 10px;
+            font-weight: bold;
+            color: #fff;
+            background-color: #ff5672;
+            padding: 2em 5em 2em 5em;
+            margin-top: 30px;
+        }
+
+        a {
+            cursor: pointer;
+        }
+
+        footer {
+            margin-top: 100px;
+            margin-bottom: 100px;
+            color: #cbd6dd;
+            font-weight: bold;
+        }
+
+        footer span {
+            color: #ff5672;
+        }
+
+        .brand {
+            font-family: inherit;
+            font-size: 1.75rem;
+            font-weight: 700;
+            line-height: inherit;
+            color: #148cb8;
+            text-transform: uppercase;
+            text-rendering: optimizeLegibility;
+        }
+
+        .navbar {
+            width: 100%;
+            height: auto;
+            padding: 1rem 2rem;
+            color: #252a32;
+            background: #ffffff;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.24);
+        }
+
+        @media only screen and (min-width: 1024px) {
+            .navbar {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                margin: 0 auto;
+            }
+        }
+
+        .navbar .navbrand {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .navbar .navbrand .burger {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            border: none;
+            outline: none;
+            background: none;
+            transition: all 0.35s ease;
+        }
+
+        .navbar .navbrand .burger-close {
+            display: none;
+        }
+
+        .navbar .navbrand .burger.active .burger-open {
+            display: none;
+        }
+
+        .navbar .navbrand .burger.active .burger-close {
+            display: flex;
+        }
+
+        @media only screen and (min-width: 1024px) {
+            .navbar .navbrand .burger {
+                display: none;
+            }
+
+            .navbar .navbrand {
+                width: 40%;
+            }
+        }
+
+        .navbar .menu {
+            width: 100%;
+            height: 0;
+            overflow: hidden;
+            transition: all 0.5s ease;
+            text-align: end;
+            margin-top: 15px;
+        }
+
+        .navbar .menu-item {
+            padding: 0 10px;
+            margin: 10px 10px;
+        }
+
+        .navbar .menu-link {
+            transition: 0.4s;
+            color: #707070;
+            font-size: 14px;
+            text-decoration: none;
+            padding: 5px 10px;
+        }
+
+        .navbar .menu-link.active {
+            background-color: #ff5672;
+            color: #ffffff;
+            padding: 5px 10px;
+        }
+
+        .navbar .menu-link:hover {
+            background-color: #ff5672;
+            color: #ffffff;
+            padding: 5px 10px;
+        }
+
+        .navbar .menu.active {
+            width: 100%;
+            height: auto;
+            margin: 1rem 0;
+        }
+
+        @media only screen and (min-width: 1024px) {
+            .navbar .menu {
+                display: flex;
+                flex-direction: row;
+                justify-content: end;
+                align-items: end;
+                height: auto;
+            }
+
+            .navbar .menu-item {
+                padding: 0;
+                margin: 10px;
+            }
+
+            .navbar .menu-link {
+                padding: 15px 20px;
+            }
+
+            .navbar .menu-link.active {
+                padding: 15px 20px;
+            }
+
+            .navbar .menu-link:hover {
+                padding: 15px 20px;
+            }
+        }
+
+        .portafolio-link {
+            transition: 0.4s;
+            color: #707070;
+            font-size: 14px;
+            text-decoration: none;
+            padding: 0 10px;
+            margin: 0 10px;
+        }
+
+        .portafolio-link:hover {
+            background-color: #ff5672;
+            color: #ffffff;
+            padding: 10px;
+        }
+
+        .portafolio-link.active {
+            background-color: #ff5672;
+            color: #ffffff;
+            padding: 10px;
+        }
+
+
+        .icon-search {
+            color: #fc758c;
+            margin: 0px 30px 0px 30px;
+        }
+
+        .logo {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .menu {
+            width: 100%;
+            text-align: end;
+            margin-top: 15px;
+        }
+
+        .logo-container {
+            margin: 5px 15px 5px 15px;
+        }
+
+        .logo-title-container {
+            margin: 5px 15px 5px 35px;
+        }
+
+        .logo-title {
+            margin: 0;
+            padding: 0;
+            color: #707070;
+            font-family: 'Montserrat';
+            font-size: 19px;
+        }
+
+        .logo-subtitle {
+            margin: 0;
+            padding: 0;
+            color: #c3d0d8;
+            font-size: 8px;
+        }
+
+        .landing-container {
+            margin: 0;
+            padding: 0;
+            background-color: #fc758c;
+            width: 100%;
+            height: 60vh;
+            color: #fff;
+            display: flex;
+            text-align: center;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+        }
+
+        .landing-container h1 {
+            font-size: 39px;
+            font-weight: bold;
+        }
+
+        .landing-container button {
+            color: #fc758c;
+            background-color: #fff;
+        }
+
+        .container {
+            margin: 0 auto;
+            max-width: 1280px;
+            width: 90%;
+        }
+
+        .link-section-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-x: auto;
+        }
+
+        @media only screen and (min-width: 601px) {
+            .container {
+                width: 85%;
+            }
+        }
+
+        @media only screen and (min-width: 993px) {
+            .container {
+                width: 70%;
+            }
+        }
+
+        .center,
+        .center-align {
+            text-align: center;
+        }
+
+        .ml-10 {
+            margin: 10px !important;
+        }
+
+        .mr-10 {
+            margin: 10px !important;
+        }
+
+        .mr-10 {
+            margin: 10px !important;
+        }
+
+        .m-30 {
+            margin: 30px !important;
+        }
+
+        .p-30 {
+            padding: 30px !important;
+        }
+
+        .p-50 {
+            padding: 50px !important;
+        }
+
+        .portafolio {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            padding: 0 4px;
+        }
+
+        .portafolio-column {
+            -ms-flex: 30%;
+            flex: 30%;
+            max-width: 30%;
+            padding: 0 4px;
+        }
+
+        .portafolio-column img {
+            margin-top: 8px;
+            vertical-align: middle;
+            width: 100%;
+        }
+
+        .portafolio-agenda {
+            display: -ms-flexbox;
+            display: flex;
+            padding: 0 4px;
+            flex-direction: column;
+        }
+
+        .portafolio-agenda-column {
+            -ms-flex: 100%;
+            flex: 100%;
+            max-width: 100%;
+            padding: 0 4px;
+        }
+
+        .portafolio-agenda-column img {
+            margin-top: 8px;
+            vertical-align: middle;
+            width: 100%;
+        }
+
+        @media screen and (max-width: 800px) {
+            .portafolio-column {
+                -ms-flex: 100%;
+                flex: 100%;
+                max-width: 100%;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .portafolio-agenda {
+                -ms-flex: 100%;
+                flex: 100%;
+                max-width: 100%;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            .portafolio-column {
+                -ms-flex: 100%;
+                flex: 100%;
+                max-width: 100%;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .portafolio-agenda {
+                -ms-flex: 100%;
+                flex: 100%;
+                max-width: 100%;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+
+        .socials {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .socials img {
+            padding: 0.5em;
+        }
+    </style>
+
+<body>
+    <nav class="navbar">
+        <div class="navbrand">
+            <div class="logo">
+                <div class="logo-container">
+                    <img src="assets/logo.png" alt="logo" />
+                </div>
+                <div class="logo-title-container">
+                    <h1 class="logo-title">SNEAK</h1>
+                    <span class="logo-subtitle">CREATIVE PORTAFOLIO</span>
+                </div>
+            </div>
+            <div class="burger" id="burger">
+                <span class="burger-open">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="16">
+                        <g fill="#000" fill-rule="evenodd">
+                            <path d="M0 0h24v2H0zM0 7h24v2H0zM0 14h24v2H0z" />
+                        </g>
+                    </svg>
+                </span>
+                <span class="burger-close">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20">
+                        <path fill="#000" fill-rule="evenodd"
+                            d="M17.778.808l1.414 1.414L11.414 10l7.778 7.778-1.414 1.414L10 11.414l-7.778 7.778-1.414-1.414L8.586 10 .808 2.222 2.222.808 10 8.586 17.778.808z" />
+                    </svg>
+                </span>
+            </div>
+        </div>
+        <ul class="menu" id="menu">
+            <li class="menu-item"><a href="#" class="menu-link active">All</a></li>
+            <li class="menu-item"><a href="#" class="menu-link">Branding</a></li>
+            <li class="menu-item"><a href="#" class="menu-link">Web</a></li>
+            <li class="menu-item"><a href="#" class="menu-link">Photography</a></li>
+            <li class="menu-item"><a href="#" class="menu-link">App</a></li>
+            <img src="assets/search.svg" class="icon-search" />
+        </ul>
+    </nav>
+    <div class="landing-container">
+        <h1>EXPLORE BEYOND HORIZON</h1>
+        <p>Magna mundi referrentur quo, no rebum dignissim qui.<br />
+            Per quodsi accusata id, agam labores.</p>
+        <button>VIEW OUR WORK</button>
+    </div>
+    <div class="container">
+        <div class="center-align m-30 p-30">
+            <img class="ml-10 mt-10" src="assets/view_quilt.svg" alt="grid_icon" id="gridViewIcon" />
+            <img class="ml-10 mt-10" src="assets/view_agenda.svg" alt="agenda_icon" id="agendaViewIcon" />
+        </div>
+        <div class="link-section-container m-30 p-30">
+            <a class="portafolio-link active" id="linkAllPortafolio">All</a>
+            <a class="portafolio-link" id="linkBrandingPortafolio">Branding</a>
+            <a class="portafolio-link" id="linkWebPortafolio">Web</a>
+            <a class="portafolio-link" id="linkPhotographyPortafolio">Photography</a>
+            <a class="portafolio-link" id="linkAppPortafolio">App</a>
+        </div>
+        <div class="portafolio" id="allPortafolio">
+            <div class="portafolio-column" id="allPortafolioColumn1"></div>
+            <div class="portafolio-column" id="allPortafolioColumn2"></div>
+            <div class="portafolio-column" id="allPortafolioColumn3"></div>
+        </div>
+        <div class="portafolio" id="brandingPortafolio">
+            <div class="portafolio-column" id="brandingPortafolioColumn1"></div>
+            <div class="portafolio-column" id="brandingPortafolioColumn2"></div>
+            <div class="portafolio-column" id="brandingPortafolioColumn3"></div>
+        </div>
+        <div class="portafolio" id="webPortafolio">
+            <div class="portafolio-column" id="webPortafolioColumn1"></div>
+            <div class="portafolio-column" id="webPortafolioColumn2"></div>
+            <div class="portafolio-column" id="webPortafolioColumn3"></div>
+        </div>
+        <div class="portafolio" id="photographyPortafolio">
+            <div class="portafolio-column" id="photographyPortafolioColumn1"></div>
+            <div class="portafolio-column" id="photographyPortafolioColumn2"></div>
+            <div class="portafolio-column" id="photographyPortafolioColumn3"></div>
+        </div>
+        <div class="portafolio" id="appPortafolio">
+            <div class="portafolio-column" id="appPortafolioColumn1"></div>
+            <div class="portafolio-column" id="appPortafolioColumn2"></div>
+            <div class="portafolio-column" id="appPortafolioColumn3"></div>
+        </div>
+        <div class="center">
+            <button>Show Me More</button>
+        </div>
+    </div>
+    <footer>
+        <div class="container">
+            <div class="center">
+                © 2016 <span>Sneak</span> All Right Reserved
+            </div>
+
+            <div class="socials">
+                <img src="assets/Facebook.png" alt="FacebookIcon" />
+                <img src="assets/Tweeter.png" alt="TweeterIcon" />
+                <img src="assets/Dribble.png" alt="DribbleIcon" />
+                <img src="assets/Google.png" alt="GoogleIcon" />
+                <img src="assets/Youtube.png" alt="YoutubeIcon" />
+            </div>
+        </div>
+    </footer>
+</body>
+<script>
+    const numberOfColumns = 3;
+    const numberOfSections = 4;
+    // Para cargar el json de las imagenes dinamicamente se necesita un servidor y la funcion jsonImgLoad() linea 876
+    let allImages = [{
+            "id": 1,
+            "url": "alexandre-brondino-tZXl4BA1PsU-unsplash.jpg"
+        },
+        {
+            "id": 2,
+            "url": "deva-williamson-sjsG1yrwJxY-unsplash.jpg"
+        },
+        {
+            "id": 3,
+            "url": "docusign-8aYqlvrVM_Y-unsplash.jpg"
+        },
+        {
+            "id": 4,
+            "url": "docusign-s5z5vEdbHmM-unsplash.jpg"
+        },
+        {
+            "id": 5,
+            "url": "frosty-ilze-K34wkUGObyE-unsplash.jpg"
+        },
+        {
+            "id": 6,
+            "url": "frosty-ilze-tfYL1j1jKNo-unsplash.jpg"
+        },
+        {
+            "id": 7,
+            "url": "frosty-ilze-Y75n6u_UUdM-unsplash.jpg"
+        },
+        {
+            "id": 8,
+            "url": "jonatan-pie-d7ZBAPEuXGc-unsplash.jpg"
+        },
+        {
+            "id": 9,
+            "url": "max-whitehead-sBy1Ud6wwYg-unsplash.jpg"
+        },
+        {
+            "id": 10,
+            "url": "max-whitehead-XfXRXGXWmKk-unsplash.jpg"
+        },
+        {
+            "id": 11,
+            "url": "naraa-in-ub-T_kTdILw9uo-unsplash.jpg"
+        },
+        {
+            "id": 12,
+            "url": "parker-hilton-sUJ5v0oK2Vs-unsplash.jpg"
+        },
+        {
+            "id": 13,
+            "url": "rasmus-smedstrup-mortensen-vsWAMgLmo-0-unsplash.jpg"
+        },
+        {
+            "id": 14,
+            "url": "ryunosuke-kikuno-pyia0ropCow-unsplash.jpg"
+        },
+        {
+            "id": 15,
+            "url": "samuel-pasteur-fosse-mbnPNdDO0lQ-unsplash.jpg"
+        },
+        {
+            "id": 16,
+            "url": "samuel-regan-asante-LdzccjtVUIs-unsplash.jpg"
+        },
+        {
+            "id": 17,
+            "url": "serhiy-hipskyy-o6un9Q_KwmQ-unsplash.jpg"
+        },
+        {
+            "id": 18,
+            "url": "serhiy-hipskyy-q3hseXczxTM-unsplash.jpg"
+        },
+        {
+            "id": 19,
+            "url": "tengyart-WA1JHCCHsgE-unsplash.jpg"
+        },
+        {
+            "id": 20,
+            "url": "xps-uWFFw7leQNI-unsplash.jpg"
+        }
+    ];
+    let linkAllPortafolio = document.getElementById('linkAllPortafolio');
+    let linkBrandingPortafolio = document.getElementById('linkBrandingPortafolio');
+    let linkWebPortafolio = document.getElementById('linkWebPortafolio');
+    let linkPhotographyPortafolio = document.getElementById('linkPhotographyPortafolio');
+    let linkAppPortafolio = document.getElementById('linkAppPortafolio');
+    let allPortafolio = document.getElementById('allPortafolio');
+    let brandingPortafolio = document.getElementById('brandingPortafolio');
+    let webPortafolio = document.getElementById('webPortafolio');
+    let photographyPortafolio = document.getElementById('photographyPortafolio');
+    let appPortafolio = document.getElementById('appPortafolio');
+
+    let gridViewIcon = document.getElementById('gridViewIcon');
+    let agendaViewIcon = document.getElementById('agendaViewIcon');
+    let navLinks = document.getElementsByClassName('menu-link');
+    const burgerMenu = document.getElementById("burger");
+    const navbarMenu = document.getElementById("menu");
+
+    burgerMenu.addEventListener("click", function () {
+        navbarMenu.classList.toggle("active");
+        burgerMenu.classList.toggle("active");
+    });
+
+    hideAllPortafolio = () => {
+        allPortafolio.style.visibility = 'hidden';
+        allPortafolio.style.display = 'none';
+        linkAllPortafolio.className = 'portafolio-link';
+        brandingPortafolio.style.visibility = 'hidden';
+        brandingPortafolio.style.display = 'none';
+        linkBrandingPortafolio.className = 'portafolio-link';
+        webPortafolio.style.visibility = 'hidden';
+        webPortafolio.style.display = 'none';
+        linkWebPortafolio.className = 'portafolio-link';
+        photographyPortafolio.style.visibility = 'hidden';
+        photographyPortafolio.style.display = 'none';
+        linkPhotographyPortafolio.className = 'portafolio-link';
+        appPortafolio.style.visibility = 'hidden';
+        appPortafolio.style.display = 'none';
+        linkAppPortafolio.className = 'portafolio-link';
+    }
+    buildImg = () => {
+        let allPortafolioColumn1 = document.getElementById('allPortafolioColumn1');
+        let allPortafolioColumn2 = document.getElementById('allPortafolioColumn2');
+        let allPortafolioColumn3 = document.getElementById('allPortafolioColumn3');
+        const numberDivide = parseInt(allImages.length / numberOfColumns);
+        allImages.slice(0, numberDivide).map((image, index) => {
+            let img = document.createElement('img');
+            img.src = `assets/img/${image.url}`;
+            img.width = '100%';
+            allPortafolioColumn1.appendChild(img);
+        })
+        allImages.slice(numberDivide, numberDivide * 2).map((image, index) => {
+            let img = document.createElement('img');
+            img.src = `assets/img/${image.url}`;
+            img.width = '100%';
+            allPortafolioColumn2.appendChild(img);
+        })
+        allImages.slice(numberDivide * 2, allImages.length).map((image, index) => {
+            let img = document.createElement('img');
+            img.src = `assets/img/${image.url}`;
+            img.width = '100%';
+            allPortafolioColumn3.appendChild(img);
+        });
+
+        const numberDivideSection = parseInt(allImages.length / 4);
+        const webPortafolio = allImages.slice(0, numberDivideSection);
+        const brandingPortafolio = allImages.slice(numberDivideSection, numberDivideSection * 2);
+        const photographyPortafolio = allImages.slice(numberDivideSection * 2, numberDivideSection * 3);
+        const appPortafolio = allImages.slice(numberDivideSection * 3, allImages.length);
+
+        let webPortafolioColumn1 = document.getElementById('webPortafolioColumn1');
+        let webPortafolioColumn2 = document.getElementById('webPortafolioColumn2');
+        let webPortafolioColumn3 = document.getElementById('webPortafolioColumn3');
+        const numberDivideWeb = parseInt(webPortafolio.length / numberOfColumns);
+        webPortafolio.slice(0, numberDivideWeb).map((image, index) => {
+            let img = document.createElement('img');
+            img.src = `assets/img/${image.url}`;
+            img.width = '100%';
+            webPortafolioColumn1.appendChild(img);
+        })
+        webPortafolio.slice(numberDivideWeb, numberDivideWeb * 2).map((image, index) => {
+            let img = document.createElement('img');
+            img.src = `assets/img/${image.url}`;
+            img.width = '100%';
+            webPortafolioColumn2.appendChild(img);
+        })
+        webPortafolio.slice(numberDivideWeb * 2, webPortafolio.length).map((image, index) => {
+            let img = document.createElement('img');
+            img.src = `assets/img/${image.url}`;
+            img.width = '100%';
+            webPortafolioColumn3.appendChild(img);
+        });
+
+        let brandingPortafolioColumn1 = document.getElementById('brandingPortafolioColumn1');
+        let brandingPortafolioColumn2 = document.getElementById('brandingPortafolioColumn2');
+        let brandingPortafolioColumn3 = document.getElementById('brandingPortafolioColumn3');
+        const numberDivideBranding = parseInt(brandingPortafolio.length / numberOfColumns);
+        brandingPortafolio.slice(0, numberDivideBranding).map((image, index) => {
+            let img = document.createElement('img');
+            img.src = `assets/img/${image.url}`;
+            img.width = '100%';
+            brandingPortafolioColumn1.appendChild(img);
+        })
+        brandingPortafolio.slice(numberDivideBranding, numberDivideBranding * 2).map((image, index) => {
+            let img = document.createElement('img');
+            img.src = `assets/img/${image.url}`;
+            img.width = '100%';
+            brandingPortafolioColumn2.appendChild(img);
+        })
+        brandingPortafolio.slice(numberDivideBranding * 2, brandingPortafolio.length).map((image, index) => {
+            let img = document.createElement('img');
+            img.src = `assets/img/${image.url}`;
+            img.width = '100%';
+            brandingPortafolioColumn3.appendChild(img);
+        });
+
+
+        let photographyPortafolioColumn1 = document.getElementById('photographyPortafolioColumn1');
+        let photographyPortafolioColumn2 = document.getElementById('photographyPortafolioColumn2');
+        let photographyPortafolioColumn3 = document.getElementById('photographyPortafolioColumn3');
+        const numberDividePhotography = parseInt(photographyPortafolio.length / numberOfColumns);
+        photographyPortafolio.slice(0, numberDividePhotography).map((image, index) => {
+            let img = document.createElement('img');
+            img.src = `assets/img/${image.url}`;
+            img.width = '100%';
+            photographyPortafolioColumn1.appendChild(img);
+        })
+        photographyPortafolio.slice(numberDividePhotography, numberDividePhotography * 2).map((image, index) => {
+            let img = document.createElement('img');
+            img.src = `assets/img/${image.url}`;
+            img.width = '100%';
+            photographyPortafolioColumn2.appendChild(img);
+        })
+        photographyPortafolio.slice(numberDividePhotography * 2, photographyPortafolio.length).map((image,
+            index) => {
+            let img = document.createElement('img');
+            img.src = `assets/img/${image.url}`;
+            img.width = '100%';
+            photographyPortafolioColumn3.appendChild(img);
+        });
+
+
+        let appPortafolioColumn1 = document.getElementById('appPortafolioColumn1');
+        let appPortafolioColumn2 = document.getElementById('appPortafolioColumn2');
+        let appPortafolioColumn3 = document.getElementById('appPortafolioColumn3');
+        const numberDivideApp = parseInt(appPortafolio.length / numberOfColumns);
+        appPortafolio.slice(0, numberDivideApp).map((image, index) => {
+            let img = document.createElement('img');
+            img.src = `assets/img/${image.url}`;
+            img.width = '100%';
+            appPortafolioColumn1.appendChild(img);
+        })
+        appPortafolio.slice(numberDivideApp, numberDivideApp * 2).map((image, index) => {
+            let img = document.createElement('img');
+            img.src = `assets/img/${image.url}`;
+            img.width = '100%';
+            appPortafolioColumn2.appendChild(img);
+        })
+        appPortafolio.slice(numberDivideApp * 2, appPortafolio.length).map((image, index) => {
+            let img = document.createElement('img');
+            img.src = `assets/img/${image.url}`;
+            img.width = '100%';
+            appPortafolioColumn3.appendChild(img);
+        });
+        buildAllImg();
+
+    }
+    buildAllImg = () => {
+        hideAllPortafolio();
+        allPortafolio.style.visibility = 'visible';
+        allPortafolio.style.display = '';
+        linkAllPortafolio.className = 'portafolio-link active';
+    }
+    buildBrandingImg = () => {
+        hideAllPortafolio();
+        brandingPortafolio.style.visibility = 'visible';
+        brandingPortafolio.style.display = '';
+        linkBrandingPortafolio.className = 'portafolio-link active';
+
+    }
+    buildWebImg = () => {
+        hideAllPortafolio();
+        webPortafolio.style.visibility = 'visible';
+        webPortafolio.style.display = '';
+        linkWebPortafolio.className = 'portafolio-link active';
+
+    }
+    buildPhotographyImg = () => {
+        hideAllPortafolio();
+        photographyPortafolio.style.visibility = 'visible';
+        photographyPortafolio.style.display = '';
+        linkPhotographyPortafolio.className = 'portafolio-link active';
+
+    }
+    buildAppImg = () => {
+        hideAllPortafolio();
+        appPortafolio.style.visibility = 'visible';
+        appPortafolio.style.display = '';
+        linkAppPortafolio.className = 'portafolio-link active';
+    }
+
+
+    jsonImgLoad = (url) => {
+        return new Promise(function (resolve, reject) {
+            var request = new XMLHttpRequest();
+            request.open('GET', url);
+            request.responseType = 'application/json';
+            request.setRequestHeader('Access-Control-Allow-Origin', '*')
+            request.onload = function () {
+                if (request.status === 200) {
+                    resolve(request.response);
+                } else {
+                    reject(Error('Image didn\'t load successfully; error code:' + request.statusText));
+                }
+            };
+            request.onerror = function () {
+                reject(Error('There was a network error.'));
+            };
+            request.send();
+        });
+    }
+    for (let i = 0; i < navLinks.length; i++) {
+        const navLink = navLinks[i];
+        navLink.addEventListener('click', (e) => {
+            let actualActives = document.getElementsByClassName('menu-link active');
+            for (let j = 0; j < actualActives.length; j++) {
+                const elementActive = actualActives[j];
+                elementActive.className = 'menu-link';
+            }
+            e.target.className = 'menu-link active';
+        })
+
+    }
+    buildGridViewIcon = () => {
+        let sectionsPortafolioArray = Array.prototype.slice.call(document.getElementsByClassName(
+            "portafolio-agenda"));
+        let sectionsColumnsArray = Array.prototype.slice.call(document.getElementsByClassName(
+            "portafolio-agenda-column"));
+        sectionsPortafolioArray.map(section => {
+            section.className = "portafolio";
+        })
+        sectionsColumnsArray.map(section => {
+            section.className = "portafolio-column";
+        })
+    }
+    buildAgendaViewIcon = () => {
+        let sectionsPortafolioArray = Array.prototype.slice.call(document.getElementsByClassName("portafolio"));
+        let sectionsColumnsArray = Array.prototype.slice.call(document.getElementsByClassName("portafolio-column"));
+        sectionsPortafolioArray.map(section => {
+            section.className = "portafolio-agenda";
+        })
+        sectionsColumnsArray.map(section => {
+            section.className = "portafolio-agenda-column";
+        })
+    }
+
+    linkAllPortafolio.addEventListener('click', buildAllImg);
+    linkBrandingPortafolio.addEventListener('click', buildBrandingImg);
+    linkWebPortafolio.addEventListener('click', buildWebImg);
+    linkPhotographyPortafolio.addEventListener('click', buildPhotographyImg);
+    linkAppPortafolio.addEventListener('click', buildAppImg);
+    gridViewIcon.addEventListener('click', buildGridViewIcon);
+    agendaViewIcon.addEventListener('click', buildAgendaViewIcon);
+    buildImg();
+    // cargar imagenes con un json dinamicamente
+    jsonImgLoad('/assets/response.json').then((response) => {
+        allImages = JSON.parse(response);
+        buildImg();
+    }).catch((err) => {
+        console.error('error', err)
+    })
+</script>
+
+</html>
